@@ -1,11 +1,24 @@
 body {
     font-family: Arial, sans-serif;
-    padding: 20px;
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    width: 400px;
+    text-align: center;
 }
 
 .card {
-    border: 1px solid #ffffff9d;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
     padding: 15px;
     margin-bottom: 15px;
     border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
+

@@ -1,50 +1,70 @@
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil do Aluno</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil do Aluno</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-   <h1>Dados do Aluno</h1> 
 
-   <div class="card" id="perfil"></div>
-   <div class="card" id="endereco"></div>
-   <div class="card" id="escolaridade"></div>
-   
-   <h2>endereco</h2>
-   <p>rua: Estrada monte claro</p>
-   <p>bairro: Miqueleto</p>
-   <p>cep: 83648000</p>
+  <div class="container">
+    <h1>Dados do Aluno</h1>
 
-   
-   <h2>escolaridade</h2>
-   <p>escola: otalipio </p>
-   <p>curso: desenvolvimento de sistemas</p>
-   <p>conclusao: 2026</p>
+    <div class="card" id="perfil"></div>
+    <div class="card" id="endereco"></div>
+    <div class="card" id="escolaridade"></div>
+  </div>
 
- 
-   <script>
-      async function carregarDados() {
-        const perfiReq = fetch('http://localhost:3000/perfil');
+  <script>
+    async function carregarDados() {
+      const perfiReq = fetch('http://localhost:3000/perfil');
 
-        const [perfilRes] = await Promise.all([perfiReq]);
+      const [perfilRes] = await Promise.all([perfiReq]);
 
-        const perfilData = await perfilRes.json();
-        
-        const perfil = await perfilRes.json();
+      const perfil = await perfilRes.json();
 
-
-        document.getElementById('perfil').innerHTML = `
+      document.getElementById('perfil').innerHTML = `
             <h2>Perfil</h2>
             <p>Nome: ${perfil.nome}</p>
             <p>Idade: ${perfil.idade}</p>
         `;
-      }
+    }
+    async function carregarEndereco() {
+      const perfiReq = fetch('http://localhost:3000/endereco');
 
-      carregarDados();
-   </script>
+      const [perfilRes] = await Promise.all([perfiReq]);
+
+      const perfil = await perfilRes.json();
+
+      document.getElementById('endereco').innerHTML = `
+            <h2>Endereço</h2>
+            <p>Rua: ${perfil.rua}</p>
+            <p>Bairro: ${perfil.bairro}</p>
+             <p>Cep: ${perfil.cep}</p>
+        `;
+    }
+    async function carregarEscolaridade() {
+      const perfiReq = fetch('http://localhost:3000/escolaridade');
+
+      const [perfilRes] = await Promise.all([perfiReq]);
+
+      const perfil = await perfilRes.json();
+
+      document.getElementById('escolaridade').innerHTML = `
+            <h2>Escolaridade</h2>
+            <p>Escola: ${perfil.escola}</p>
+            <p>Curso: ${perfil.curso}</p>
+             <p>Conclusão: ${perfil.conclusão}</p>
+        `;
+    }
+    carregarDados();
+    carregarEndereco();
+    carregarEscolaridade();
+  </script>
 
 
 </body>
+
 </html>
